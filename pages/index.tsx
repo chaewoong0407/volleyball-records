@@ -12,7 +12,7 @@ const Home = () => {
       <Head>
         <title>배구 기록 페이지</title>
       </Head>
-      <Container>sss</Container>
+      <Container>개발</Container>
     </>
   );
 };
