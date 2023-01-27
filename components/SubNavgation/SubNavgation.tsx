@@ -34,12 +34,12 @@ const TabLink = styled(Link)<TabLinkProps>`
 const TeamBox = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 1200px;
+  margin: 0 auto;
   height: 180px;
   font-size: 40px;
   font-weight: bold;
   color: #fff;
-  padding: 0 40px;
 `;
 
 const SubNavgation = () => {
