@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import { Header, MenTeam, WomenTeam } from 'components';
+import { Header, MenTeam, SubNavgation, WomenTeam } from 'components';
 import { useRouter } from 'next/router';
 
 const Container = styled.div`
+  position: relative;
   width: 100%;
   height: calc(100% - 140px);
 `;
@@ -19,6 +20,7 @@ const Team = () => {
   return (
     <Container>
       <Header />
+      <SubNavgation />
       {renderContentByQueryId(id)}
     </Container>
   );
