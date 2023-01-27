@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Header } from 'components';
+import { Header, MenTeam, WomenTeam } from 'components';
 import { useRouter } from 'next/router';
 
 const Container = styled.div`
@@ -9,9 +9,9 @@ const Container = styled.div`
 
 const renderContentByQueryId = (id: string) =>
   ({
-    men: <></>,
-    women: <></>,
-  }[id] || <></>);
+    men: <MenTeam />,
+    women: <WomenTeam />,
+  }[id] || <MenTeam />);
 
 const Team = () => {
   const router = useRouter();

@@ -20,7 +20,7 @@ const NavContent = styled(Link)`
 const Header = () => {
   return (
     <Container>
-      <NavContent href={'/team'}>TEAM</NavContent>
+      <NavContent href={'/team/men'}>TEAM</NavContent>
       <div>로고 들어갈 곳</div>
       <NavContent href={'/stat'}>STATS</NavContent>
     </Container>
