@@ -34,7 +34,7 @@ export interface TeamIntroductionType {
   team_logo: string;
   gender: boolean;
   created_at: string;
-  coach: CoachType[];
+  coach: string;
   performance: PerformanceType[];
 }
 
@@ -47,7 +47,7 @@ const Introduction = () => {
     team_logo: '',
     gender: true,
     created_at: '',
-    coach: [],
+    coach: '',
     performance: [],
   });
 

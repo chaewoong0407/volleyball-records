@@ -53,7 +53,7 @@ const TeamDetails = ({ team }: TeamIntroductionProps) => {
 
   const renderContentByPage = (page: string) =>
     ({
-      introduction: <TeamIntroduction />,
+      introduction: <TeamIntroduction team={team} />,
       coach: <div>코칭스태프</div>,
       players: <div>선수소개</div>,
       record: <div>팀기록</div>,
