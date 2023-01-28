@@ -1,12 +1,18 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
+import { CoachType } from 'pages/team/[id]/coach';
 import { TeamIntroductionType } from 'pages/team/[id]/introduction';
+import { PlayerType } from 'pages/team/[id]/players';
 import React from 'react';
 import TeamHeader from '../TeamHeader/TeamHeader';
+import TeamCoach from './TeamCoach/TeamCoach';
 import TeamIntroduction from './TeamIntroduction/TeamIntroduction';
+import TeamPlayers from './TeamPlayers/TeamPlayers';
 
 export interface TeamIntroductionProps {
-  team: TeamIntroductionType;
+  team?: TeamIntroductionType;
+  coach?: CoachType;
+  player?: PlayerType[];
 }
 
 export interface ButtonProps {
@@ -44,18 +50,15 @@ const TeamInfoBox = styled.div`
   display: flex;
 `;
 
-const TeamDetails = ({ team }: TeamIntroductionProps) => {
+const TeamDetails = ({ team, coach, player }: TeamIntroductionProps) => {
   const router = useRouter();
   const page = router.pathname.split('/');
-
-  console.log(router);
-  console.log(page);
 
   const renderContentByPage = (page: string) =>
     ({
       introduction: <TeamIntroduction team={team} />,
-      coach: <div>코칭스태프</div>,
-      players: <div>선수소개</div>,
+      coach: <TeamCoach coach={coach} />,
+      players: <TeamPlayers player={player} />,
       record: <div>팀기록</div>,
       review: <div>총평</div>,
     }[page] || <></>);
@@ -63,7 +66,7 @@ const TeamDetails = ({ team }: TeamIntroductionProps) => {
     <Container>
       <TeamWrapper>
         <TeamComboBox>
-          <option>{team.name}</option>
+          <option>{team && team.name}</option>
         </TeamComboBox>
         <TeamInfoBox>
           <TeamHeader team={team} />

@@ -58,7 +58,7 @@ const TeamHeader = ({ team }: TeamIntroductionProps) => {
           onClick={() =>
             router.push({
               pathname: data.href,
-              query: { team_id: team.id },
+              query: { team_id: team && team.id },
             })
           }
         >

@@ -79,16 +79,16 @@ export const TeamIntroduction = ({ team }: TeamIntroductionProps) => {
     <Container>
       <TeamWrapper>
         <img
-          src={team.team_logo}
+          src={team && team.team_logo}
           alt={'로고'}
           width={180}
           height={135}
           style={{ marginLeft: '25px' }}
         />
         <TeamTitleWrapper>
-          <TeamTitle>{team.name}</TeamTitle>
+          <TeamTitle>{team && team.name}</TeamTitle>
           <TeamCoach>
-            <span style={{ color: '#253032' }}>코치</span> : {team.coach}
+            <span style={{ color: '#253032' }}>코치</span> :{team && team.coach}
           </TeamCoach>
         </TeamTitleWrapper>
       </TeamWrapper>
@@ -105,21 +105,22 @@ export const TeamIntroduction = ({ team }: TeamIntroductionProps) => {
             </tr>
           </thead>
           <tbody>
-            {team.performance.map((data, idx) => (
-              <tr key={idx}>
-                <td>{data.id}</td>
-                <td>{data.competition_name}</td>
-                <td>{data.results}</td>
-                <td>
-                  {data.win_counts}승 {data.lose_counts}패
-                </td>
-                <td>
-                  {data.start_date === data.end_date
-                    ? `${data.start_date}`
-                    : `${data.start_date} ~ ${data.end_date}`}
-                </td>
-              </tr>
-            ))}
+            {team &&
+              team.performance.map((data, idx) => (
+                <tr key={idx}>
+                  <td>{data.id}</td>
+                  <td>{data.competition_name}</td>
+                  <td>{data.results}</td>
+                  <td>
+                    {data.win_counts}승 {data.lose_counts}패
+                  </td>
+                  <td>
+                    {data.start_date === data.end_date
+                      ? `${data.start_date}`
+                      : `${data.start_date} ~ ${data.end_date}`}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </PerformanceWrapper>
