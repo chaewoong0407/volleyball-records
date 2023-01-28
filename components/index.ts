@@ -3,6 +3,6 @@ import SubNavgation from './SubNavgation/SubNavgation';
 import Login from './Auth/Login/Login';
 import Register from './Auth/Register/Register';
 import TeamList from './Team/TeamList';
-import TeamIntroduction from './Team/TeamIntroduction/TeamIntroduction';
+import TeamDetails from './Team/TeamDetails/TeamDetails';
 
-export { Header, SubNavgation, TeamList, Login, Register, TeamIntroduction };
+export { Header, SubNavgation, TeamList, Login, Register, TeamDetails };

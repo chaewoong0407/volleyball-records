@@ -3,6 +3,7 @@ import { Header, SubNavgation, TeamDetails } from 'components';
 import { TokenClient } from 'lib/Axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import { TeamIntroductionType } from '../introduction';
 
 const Container = styled.div`
   position: relative;
@@ -10,28 +11,16 @@ const Container = styled.div`
   height: calc(100% - 140px);
 `;
 
-export type PerformanceType = {
-  id: number;
-  competition_name: string;
-  results: string;
-  win_counts: number;
-  lose_counts: number;
-  start_date: string;
-  end_date: string;
-  team_id: number;
-};
-
-export interface TeamIntroductionType {
+export type PlayerType = {
   id: number;
   name: string;
-  team_logo: string;
-  gender: boolean;
-  created_at: string;
-  coach: string;
-  performance: PerformanceType[];
-}
+  number: number;
+  position_name: string;
+  position_code: string;
+  profile_image: string;
+};
 
-const Introduction = () => {
+const Players = () => {
   const router = useRouter();
   const id = router.query.team_id;
   const [team, setTeam] = useState<TeamIntroductionType>({
@@ -43,6 +32,7 @@ const Introduction = () => {
     coach: '',
     performance: [],
   });
+  const [player, setPlayer] = useState<PlayerType[]>([]);
 
   useEffect(() => {
     TokenClient.get('/team/introduction', { params: { team_id: id } })
@@ -58,14 +48,28 @@ const Introduction = () => {
         console.log(response.data);
         console.log(response.status);
       });
+
+    TokenClient.get('/team/players', { params: { team_id: id } })
+      .then((response) => {
+        console.log(response.data.data);
+        console.log(response.status);
+
+        if (response.status === 200) {
+          setPlayer(response.data.data);
+        }
+      })
+      .catch((response) => {
+        console.log(response.data);
+        console.log(response.status);
+      });
   }, [id]);
   return (
     <Container>
       <Header />
       <SubNavgation />
-      <TeamDetails team={team} />
+      <TeamDetails team={team} player={player} />
     </Container>
   );
 };
 
-export default Introduction;
+export default Players;
