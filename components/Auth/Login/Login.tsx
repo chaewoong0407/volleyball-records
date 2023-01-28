@@ -142,7 +142,7 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
         console.log(getToken());
 
         if (response.status === 200) {
-          alert('로그인 성공! 안채웅 qt');
+          alert('로그인 성공! ');
           router.push('/team/men');
         }
       })
