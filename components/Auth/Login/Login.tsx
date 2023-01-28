@@ -70,6 +70,7 @@ const TextBox = styled.div`
   color: #888;
   text-align: right;
   padding-top: 10px;
+  text-align: center;
 `;
 
 export const SubmitForm = styled.form`
@@ -79,6 +80,22 @@ export const SubmitForm = styled.form`
   height: 100%;
   justify-content: center;
   align-items: center;
+`;
+
+const SignUpWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+`
+
+const SignUpButton = styled.button`
+  font-size : 16px;
+  margin-top : 20px;
+  align-items: center;
+  border : none;
+  outline : none;
+  background : none;
 `;
 
 type LoginSubmitFormProps = {
@@ -125,7 +142,7 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
         console.log(getToken());
 
         if (response.status === 200) {
-          alert('로그인 성공!');
+          alert('로그인 성공! 안채웅 qt');
           router.push('/team/men');
         }
       })
@@ -139,7 +156,10 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
   return (
     <SubmitForm onSubmit={handleSubmit}>
       <Container>
-        <div style={{ paddingBottom: '48px' }}>로고 혹은 이름</div>
+          <div style={{ paddingBottom: '48px' }}>
+            <img
+            src='https://i.imgur.com/BAjHmEF.jpeg' width={240}/>
+          </div>
         <LoginBox>
           <LoginPanel>
             <IdBox>
@@ -152,14 +172,22 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
             <PasswordBox>
               <Input
                 placeholder='비밀번호를 입력하세요'
+                type = 'password'
                 value={password}
                 onChange={handlePassword}
               />
             </PasswordBox>
             <SubmitButton>로그인</SubmitButton>
-            <TextBox>회원가입</TextBox>
           </LoginPanel>
         </LoginBox>
+        <SignUpWrapper>
+          <SignUpButton>
+            비밀번호 찾기
+          </SignUpButton>
+          <SignUpButton>
+            회원가입
+          </SignUpButton>
+        </SignUpWrapper>
       </Container>
     </SubmitForm>
   );
