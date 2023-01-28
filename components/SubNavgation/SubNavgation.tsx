@@ -44,26 +44,27 @@ const TeamBox = styled.div`
 
 const SubNavgation = () => {
   const router = useRouter();
+  const id = router.query.id as string;
 
   const handleName = (router: string) => {
     switch (router) {
-      case '/team/men':
+      case 'men':
         return '남자부';
-      case '/team/women':
+      case 'women':
         return '여자부';
     }
   };
   return (
     <Container>
       <SubTabBox>
-        <TabLink href={'/team/men'} path={router.asPath === '/team/men'}>
+        <TabLink href={'/team/men'} path={id === 'men'}>
           남자부
         </TabLink>
-        <TabLink href={'/team/women'} path={router.asPath === '/team/women'}>
+        <TabLink href={'/team/women'} path={id === 'women'}>
           여자부
         </TabLink>
       </SubTabBox>
-      <TeamBox>{handleName(router.asPath)}</TeamBox>
+      <TeamBox>{handleName(id)}</TeamBox>
     </Container>
   );
 };

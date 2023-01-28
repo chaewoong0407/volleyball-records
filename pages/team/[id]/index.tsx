@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
-import { Header, MenTeam, SubNavgation, WomenTeam } from 'components';
+import { Header, TeamList, SubNavgation } from 'components';
+import { TokenClient } from 'lib/Axios';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 const Container = styled.div`
   position: relative;
@@ -8,15 +10,42 @@ const Container = styled.div`
   height: calc(100% - 140px);
 `;
 
-const renderContentByQueryId = (id: string) =>
-  ({
-    men: <MenTeam />,
-    women: <WomenTeam />,
-  }[id] || <MenTeam />);
+export interface TeamType {
+  id: number;
+  name: string;
+  team_logo: string;
+  gender: boolean;
+  created_at: string;
+}
 
 const Team = () => {
   const router = useRouter();
   const id = router.query.id as string;
+  const [team, setTeam] = useState<TeamType[]>([]);
+
+  const renderContentByQueryId = (id: string) =>
+    ({
+      men: <TeamList team={team} />,
+      women: <TeamList team={team} />,
+    }[id] || <></>);
+
+  useEffect(() => {
+    TokenClient.get('/team', {
+      params: { gender: id === 'men' ? true : false },
+    })
+      .then((response) => {
+        console.log(response.data);
+        console.log(response.status);
+
+        if (response.status === 200) {
+          setTeam(response.data.data);
+        }
+      })
+      .catch((response) => {
+        console.log(response.data);
+        console.log(response.status);
+      });
+  }, [id]);
   return (
     <Container>
       <Header />

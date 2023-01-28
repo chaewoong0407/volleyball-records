@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
@@ -21,7 +22,12 @@ const Header = () => {
   return (
     <Container>
       <NavContent href={'/team/men'}>TEAM</NavContent>
-      <div>로고 들어갈 곳</div>
+      <img
+        src='https://i.imgur.com/BAjHmEF.jpeg'
+        alt={'로고'}
+        width={71}
+        height={74}
+      />
       <NavContent href={'/stat'}>STATS</NavContent>
     </Container>
   );
