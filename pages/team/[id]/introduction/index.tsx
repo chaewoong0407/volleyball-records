@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Header, SubNavgation, TeamIntroduction } from 'components';
+import { Header, SubNavgation, TeamDetails } from 'components';
 import { TokenClient } from 'lib/Axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -70,7 +70,7 @@ const Introduction = () => {
     <Container>
       <Header />
       <SubNavgation />
-      <TeamIntroduction team={team} />
+      <TeamDetails team={team} />
     </Container>
   );
 };
