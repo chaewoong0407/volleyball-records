@@ -58,7 +58,7 @@ const TeamDetails = ({ team, coach, player }: TeamIntroductionProps) => {
     ({
       introduction: <TeamIntroduction team={team} />,
       coach: <TeamCoach coach={coach} />,
-      players: <TeamPlayers player={player} />,
+      players: <TeamPlayers player={player} team={team} />,
       record: <div>팀기록</div>,
       review: <div>총평</div>,
     }[page] || <></>);

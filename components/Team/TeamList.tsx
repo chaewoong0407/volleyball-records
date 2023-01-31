@@ -104,10 +104,13 @@ const Team = ({ team }: TeamProps) => {
                   <TeamButton
                     key={idx}
                     onClick={() =>
-                      router.push({
-                        pathname: data.href,
-                        query: { team_id: team.id },
-                      })
+                      router.push(
+                        {
+                          pathname: data.href,
+                          query: { team_id: team.id },
+                        },
+                        data.href
+                      )
                     }
                   >
                     {data.name}
