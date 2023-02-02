@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { RecordTitle } from '../TeamPlayers/PlayerDetails/PlayerDetails';
 import { TeamRecordItem } from './TeamRecordAttack/TeamRecordAttack';
 import { TeamRecordBlock } from './TeamRecordBlock/TeamRecordBlock';
+import { TeamRecordReceive } from './TeamRecordReceive/TeamRecordReceive';
 import { TeamRecordServe } from './TeamRecordServe/TeamRecordServe';
 
 interface TeamRecordsProps {
@@ -147,7 +148,7 @@ export const TeamRecords = ({ team }: TeamRecordsProps) => {
     { name: '공격', content: <TeamRecordItem /> },
     { name: '블로킹', content: <TeamRecordBlock /> },
     { name: '서브', content: <TeamRecordServe /> },
-    { name: '리시브', content: <TeamRecordItem type='serve_receive' /> },
+    { name: '리시브', content: <TeamRecordReceive /> },
     { name: '디그', content: <TeamRecordItem type='dig' /> },
   ];
 
