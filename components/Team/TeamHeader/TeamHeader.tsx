@@ -52,7 +52,7 @@ const TeamHeader = ({ team }: TeamIntroductionProps) => {
           key={idx}
           path={data.href === currentPage[0]}
           onClick={() =>
-            router.push({
+            router.replace({
               pathname: data.href,
               query: { team_id: team && team.id },
             })
