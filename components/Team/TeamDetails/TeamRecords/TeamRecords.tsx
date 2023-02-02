@@ -4,12 +4,18 @@ import { useState } from 'react';
 import { RecordTitle } from '../TeamPlayers/PlayerDetails/PlayerDetails';
 import { TeamRecordItem } from './TeamRecordAttack/TeamRecordAttack';
 import { TeamRecordBlock } from './TeamRecordBlock/TeamRecordBlock';
+import { TeamRecordDig } from './TeamRecordDig/TeamRecordDig';
 import { TeamRecordReceive } from './TeamRecordReceive/TeamRecordReceive';
 import { TeamRecordServe } from './TeamRecordServe/TeamRecordServe';
 
 interface TeamRecordsProps {
   team?: TeamIntroductionType;
 }
+
+interface MenuTypeBoxProps {
+  isActive: boolean;
+}
+
 const Container = styled.div`
   width: 100%;
   max-width: 960px;
@@ -88,16 +94,16 @@ const MenuBox = styled.div`
   margin-top: 15px;
 `;
 
-const MenuBlock = styled.div`
+const MenuBlock = styled.div<MenuTypeBoxProps>`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: #e5e6e7;
+  background: ${({ isActive }) => (isActive ? '#0e76bc' : '#e5e6e7')};
   height: 50px;
   font-size: 15px;
-  color: #333;
+  color: ${({ isActive }) => (isActive ? '#fff' : '#333')};
 `;
 
 export type AttackType = {
@@ -141,7 +147,6 @@ export type DigType = {
   match_count: number;
   set_count: number;
 };
-
 export const TeamRecords = ({ team }: TeamRecordsProps) => {
   const [currentTab, clickTab] = useState(0);
   const menuArr = [
@@ -149,7 +154,7 @@ export const TeamRecords = ({ team }: TeamRecordsProps) => {
     { name: '블로킹', content: <TeamRecordBlock /> },
     { name: '서브', content: <TeamRecordServe /> },
     { name: '리시브', content: <TeamRecordReceive /> },
-    { name: '디그', content: <TeamRecordItem type='dig' /> },
+    { name: '디그', content: <TeamRecordDig /> },
   ];
 
   const selectMenuHandler = (index: number) => {
@@ -173,7 +178,11 @@ export const TeamRecords = ({ team }: TeamRecordsProps) => {
       <RecordTitle>팀 기록</RecordTitle>
       <MenuBox>
         {menuArr.map((el, idx) => (
-          <MenuBlock key={idx} onClick={() => selectMenuHandler(idx)}>
+          <MenuBlock
+            key={idx}
+            isActive={idx === currentTab}
+            onClick={() => selectMenuHandler(idx)}
+          >
             {el.name}
           </MenuBlock>
         ))}
