@@ -1,3 +1,120 @@
 {
-  "SERVER": "http://wings-vollyball.kro.kr:8000"
+  "SERVER": "http://wings-vollyball.kro.kr:8000",
+  "data": {
+    "user": {
+      "id": 7,
+      "name": "용은재",
+      "number": 19,
+      "profile_image": "https://i.imgur.com/7vVBUNM.jpeg",
+      "weight": 65,
+      "height": 174.8,
+      "position": null
+    },
+    "detail_record": {
+      "attack": {
+        "attack": 5,
+        "attack_success": 1,
+        "attack_miss": 1,
+        "blocking_shut_out": 0,
+        "accuracy": 20,
+        "possession": 33
+      },
+      "serve": {
+        "serve_success": 1,
+        "serve_miss": 0,
+        "attack_miss": 1,
+        "possession": 100
+      },
+      "block": {
+        "block_success": 0,
+        "block": 0,
+        "block_miss": 0,
+        "block_fail": 0,
+        "possession": 0
+      },
+      "dig": {
+        "dig": 0,
+        "dig_success": 0,
+        "dig_fail": 0,
+        "possession": 0
+      },
+      "serve_receive": {
+        "receive": 0,
+        "receive_success": 0,
+        "receive_miss": 0,
+        "possession": 0
+      },
+      "set_count": 3,
+      "match_count": 1
+    },
+    "player_record": {
+      "score_rank": {
+        "total_count": 2,
+        "rank": 1
+      },
+      "attack_rank": {
+        "total_count": 1,
+        "rank": 2
+      },
+      "serve_rank": {
+        "total_count": 1,
+        "rank": 1
+      },
+      "block_rank": {
+        "total_count": 0,
+        "rank": 0
+      },
+      "receive_rank": {
+        "total_count": 0,
+        "rank": 0
+      }
+    },
+    "photo_gallery_urls": [
+      {
+        "id": 1,
+        "user_id": 7,
+        "image_url": "1"
+      },
+      {
+        "id": 2,
+        "user_id": 7,
+        "image_url": "2"
+      },
+      {
+        "id": 3,
+        "user_id": 7,
+        "image_url": "3"
+      }
+    ],
+    "job": {
+      "prize": [
+        {
+          "id": 1,
+          "prize_name": "2022_베스트_커플상",
+          "created_at": "2023-01-08",
+          "user_id": 7,
+          "team_id": 1
+        }
+      ],
+      "triple_crown": [
+        {
+          "id": 1,
+          "user_id": 7,
+          "back_attack_count": 3,
+          "serve_count": 3,
+          "block_count": 4,
+          "created_at": "2023-01-24",
+          "match_id": 1
+        }
+      ],
+      "reference_record": [
+        {
+          "id": 1,
+          "user_id": 7,
+          "record_name": "서브 100득점",
+          "created_at": "2023-01-24"
+        }
+      ]
+    }
+  }
 }

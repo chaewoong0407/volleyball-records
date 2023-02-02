@@ -8,8 +8,8 @@ const TeamInfoButton = styled.button<ButtonProps>`
   height: 50px;
   text-align: center;
   font-size: 15px;
-  background: ${({ path }) => (path ? '#0e76bc' : '#e5e6e7')};
-  color: ${({ path }) => (path ? '#fff' : '#333')};
+  background: ${({ path }) => (path === true ? '#0e76bc' : '#e5e6e7')};
+  color: ${({ path }) => (path === true ? '#fff' : '#333')};
   outline: none;
   border: none;
   border-right: 1px solid #c4c6c8;
@@ -21,6 +21,7 @@ const TeamInfoButton = styled.button<ButtonProps>`
 
 const TeamHeader = ({ team }: TeamIntroductionProps) => {
   const router = useRouter();
+  const currentPage = router.asPath.split('?');
   const queryId = router.query.id as string;
   const List = [
     {
@@ -49,20 +50,12 @@ const TeamHeader = ({ team }: TeamIntroductionProps) => {
       {List.map((data, idx) => (
         <TeamInfoButton
           key={idx}
-          path={
-            data.href ===
-            (typeof window !== 'undefined'
-              ? window.location.pathname
-              : undefined)
-          }
+          path={data.href === currentPage[0]}
           onClick={() =>
-            router.push(
-              {
-                pathname: data.href,
-                query: { team_id: team && team.id },
-              },
-              data.href
-            )
+            router.push({
+              pathname: data.href,
+              query: { team_id: team && team.id },
+            })
           }
         >
           {data.name}
@@ -71,5 +64,11 @@ const TeamHeader = ({ team }: TeamIntroductionProps) => {
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
 
 export default TeamHeader;
