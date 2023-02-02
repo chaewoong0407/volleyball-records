@@ -22,6 +22,10 @@ const Record = () => {
     created_at: '',
     coach: '',
     performance: [],
+    team_total_record: {
+      total_win_count: 0,
+      total_lose_count: 0,
+    },
   });
 
   useEffect(() => {

@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { TeamIntroductionType } from 'pages/team/[id]/introduction';
 import { useState } from 'react';
 import { RecordTitle } from '../TeamPlayers/PlayerDetails/PlayerDetails';
+import { TeamRecordItem } from './TeamRecordAttack/TeamRecordAttack';
+import { TeamRecordBlock } from './TeamRecordBlock/TeamRecordBlock';
 
 interface TeamRecordsProps {
   team?: TeamIntroductionType;
@@ -81,6 +83,7 @@ const Text = styled.div`
 const MenuBox = styled.div`
   display: flex;
   height: 50px;
+  margin-top: 15px;
 `;
 
 const MenuBlock = styled.div`
@@ -95,15 +98,56 @@ const MenuBlock = styled.div`
   color: #333;
 `;
 
+export type AttackType = {
+  attack: number;
+  attack_miss: number;
+  attack_success: number;
+  blocking_shut_out: number;
+  match_count: number;
+  set_count: number;
+};
+
+export type BlockType = {
+  block: number;
+  block_fail: number;
+  block_miss: number;
+  block_success: number;
+  match_count: number;
+  set_count: number;
+};
+
+export type ServeType = {
+  serve_count: number;
+  serve_miss: number;
+  serve_success: number;
+  match_count: number;
+  set_count: number;
+};
+
+export type ReceiveType = {
+  receive: number;
+  receive_miss: number;
+  receive_success: number;
+  match_count: number;
+  set_count: number;
+};
+
+export type DigType = {
+  dig: number;
+  dig_fail: number;
+  dig_success: number;
+  match_count: number;
+  set_count: number;
+};
+
 export const TeamRecords = ({ team }: TeamRecordsProps) => {
   const [currentTab, clickTab] = useState(0);
-
   const menuArr = [
-    { name: '공격', content: '공격' },
-    { name: '블로킹', content: '블로킹' },
-    { name: '서브', content: '서브' },
-    { name: '리시브', content: '리시브' },
-    { name: '디그', content: '디그' },
+    { name: '공격', content: <TeamRecordItem /> },
+    { name: '블로킹', content: <TeamRecordBlock /> },
+    { name: '서브', content: <TeamRecordItem type='serve' /> },
+    { name: '리시브', content: <TeamRecordItem type='serve_receive' /> },
+    { name: '디그', content: <TeamRecordItem type='dig' /> },
   ];
 
   const selectMenuHandler = (index: number) => {
@@ -117,11 +161,11 @@ export const TeamRecords = ({ team }: TeamRecordsProps) => {
         <TeamNameBox>{team?.name}</TeamNameBox>
         <ScoreBox>
           <WinCircle>승</WinCircle>
-          <Text>19</Text>
+          <Text>{team?.team_total_record?.total_win_count}</Text>
         </ScoreBox>
         <ScoreBox>
           <LoseCircle>패</LoseCircle>
-          <Text>16</Text>
+          <Text>{team?.team_total_record?.total_lose_count}</Text>
         </ScoreBox>
       </TeamBox>
       <RecordTitle>팀 기록</RecordTitle>

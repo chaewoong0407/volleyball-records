@@ -21,6 +21,11 @@ export type PerformanceType = {
   team_id: number;
 };
 
+export type TeamTotalRecordType = {
+  total_win_count: number;
+  total_lose_count: number;
+};
+
 export interface TeamIntroductionType {
   id: number;
   name: string;
@@ -29,6 +34,7 @@ export interface TeamIntroductionType {
   created_at: string;
   coach: string;
   performance: PerformanceType[];
+  team_total_record?: TeamTotalRecordType;
 }
 
 const Introduction = () => {

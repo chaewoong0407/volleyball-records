@@ -50,7 +50,7 @@ export const PlayerJob = ({ data }: PlayerJobProps) => {
         {data &&
           data.prize.map((item) => (
             <>
-              <Text>- {item.prize_name}</Text>
+              <Text key={item.id}>- {item.prize_name}</Text>
             </>
           ))}
       </Wrapper>
