@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { TokenClient } from 'lib/Axios';
 import React, { useEffect, useState } from 'react';
+import { PhotoSwiper } from './PhotoSwiper/PhotoSwiper';
 import { RecordTabs } from './RecordTabs/RecordTabs';
 
 interface PlayerDetailProps {
@@ -174,7 +175,7 @@ type RankType = {
   rank: number;
 };
 
-type PhotoGalleryType = {
+export type PhotoGalleryType = {
   id: number;
   user_id: number;
   image_url: string;
@@ -338,6 +339,8 @@ const PlayerDetails = ({ team_id, player_id }: PlayerDetailProps) => {
       <RecordBox>
         <RecordTabs data={playerData?.detail_record} />
       </RecordBox>
+      <RecordTitle>포토갤러리</RecordTitle>
+      <PhotoSwiper images={playerData?.photo_gallery_urls} />
     </Container>
   );
 };
