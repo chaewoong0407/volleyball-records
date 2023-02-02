@@ -9,6 +9,7 @@ import TeamCoach from './TeamCoach/TeamCoach';
 import TeamIntroduction from './TeamIntroduction/TeamIntroduction';
 import TeamPlayers from './TeamPlayers/TeamPlayers';
 import { TeamRecords } from './TeamRecords/TeamRecords';
+import { TeamReview } from './TeamReview/TeamReview';
 
 export interface TeamIntroductionProps {
   team?: TeamIntroductionType;
@@ -33,7 +34,7 @@ const TeamWrapper = styled.div`
   gap: 20px;
 `;
 
-const TeamComboBox = styled.select`
+export const TeamComboBox = styled.select`
   width: 210px;
   height: 32px;
   padding-left: 10px;
@@ -61,7 +62,7 @@ const TeamDetails = ({ team, coach, player }: TeamIntroductionProps) => {
       coach: <TeamCoach coach={coach} />,
       players: <TeamPlayers player={player} team={team} />,
       record: <TeamRecords team={team} />,
-      review: <div>총평</div>,
+      review: <TeamReview />,
     }[page] || <></>);
   return (
     <Container>
