@@ -118,7 +118,7 @@ const TableBody = styled.tbody`
   }
 `;
 
-const RecordTitle = styled.div`
+export const RecordTitle = styled.div`
   margin-top: 20px;
   font-size: 16px;
   color: #0e76bc;

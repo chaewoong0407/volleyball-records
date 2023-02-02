@@ -8,6 +8,7 @@ import TeamHeader from '../TeamHeader/TeamHeader';
 import TeamCoach from './TeamCoach/TeamCoach';
 import TeamIntroduction from './TeamIntroduction/TeamIntroduction';
 import TeamPlayers from './TeamPlayers/TeamPlayers';
+import { TeamRecords } from './TeamRecords/TeamRecords';
 
 export interface TeamIntroductionProps {
   team?: TeamIntroductionType;
@@ -59,7 +60,7 @@ const TeamDetails = ({ team, coach, player }: TeamIntroductionProps) => {
       introduction: <TeamIntroduction team={team} />,
       coach: <TeamCoach coach={coach} />,
       players: <TeamPlayers player={player} team={team} />,
-      record: <div>팀기록</div>,
+      record: <TeamRecords team={team} />,
       review: <div>총평</div>,
     }[page] || <></>);
   return (
