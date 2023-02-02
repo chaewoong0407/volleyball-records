@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { TokenClient } from 'lib/Axios';
 import React, { useEffect, useState } from 'react';
 import { PhotoSwiper } from './PhotoSwiper/PhotoSwiper';
+import { PlayerJob } from './PlayerJob/PlayerJob';
 import { RecordTabs } from './RecordTabs/RecordTabs';
 
 interface PlayerDetailProps {
@@ -224,6 +225,7 @@ type UserType = {
   weight: number | null;
   height: number | null;
   position: string | null;
+  birth: string;
 };
 
 type PlayerRecordType = {
@@ -234,7 +236,7 @@ type PlayerRecordType = {
   receive_rank: RankType;
 };
 
-type JobType = {
+export type JobType = {
   prize: PrizeType[];
   triple_crown: TripleCrownType[];
   reference_record: ReferenceRecordType[];
@@ -286,7 +288,7 @@ const PlayerDetails = ({ team_id, player_id }: PlayerDetailProps) => {
             <ProfileContent>
               <ProfileBlock>
                 <h4>생년월일</h4>
-                <span>2003년 10월 22일</span>
+                <span>{playerData?.user.birth}</span>
               </ProfileBlock>
               <ProfileBlock>
                 <h4>신장/체중</h4>
@@ -341,6 +343,8 @@ const PlayerDetails = ({ team_id, player_id }: PlayerDetailProps) => {
       </RecordBox>
       <RecordTitle>포토갤러리</RecordTitle>
       <PhotoSwiper images={playerData?.photo_gallery_urls} />
+      <RecordTitle>주요 경력</RecordTitle>
+      <PlayerJob data={playerData?.job} />
     </Container>
   );
 };
