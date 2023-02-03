@@ -64,15 +64,6 @@ const SubmitButton = styled.button`
   color: #fff;
 `;
 
-const TextBox = styled.div`
-  width: 100%;
-  font-size: 14px;
-  color: #888;
-  text-align: right;
-  padding-top: 10px;
-  text-align: center;
-`;
-
 export const SubmitForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -87,16 +78,16 @@ const SignUpWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 200px;
-  `;
-  
+`;
+
 const SignUpButton = styled.button`
-  font-size : 16px;
-  margin-top : 20px;
+  font-size: 16px;
+  margin-top: 20px;
   align-items: center;
-  border : none;
-  outline : none;
-  background : none;
-  `;
+  border: none;
+  outline: none;
+  background: none;
+`;
 
 type LoginSubmitFormProps = {
   onSubmit: (form: { id: string; password: string }) => void;
@@ -135,14 +126,14 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
         password: password,
       })
       .then((response) => {
-        sessionStorage.setItem('volleyball-token', TestToken);
         console.log(response.data);
         console.log(response.status);
         console.log(response.data.token);
         console.log(getToken());
 
         if (response.status === 200) {
-          alert('로그인 성공! ');
+          sessionStorage.setItem('volleyball-token', TestToken);
+          alert('로그인 성공!');
           router.push('/team/men');
         }
       })
@@ -156,10 +147,9 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
   return (
     <SubmitForm onSubmit={handleSubmit}>
       <Container>
-          <div style={{ paddingBottom: '48px' }}>
-            <img
-            src='https://i.imgur.com/BAjHmEF.jpeg' width={240}/>
-          </div>
+        <div style={{ paddingBottom: '48px' }}>
+          <img src='https://i.imgur.com/BAjHmEF.jpeg' width={240} />
+        </div>
         <LoginBox>
           <LoginPanel>
             <IdBox>

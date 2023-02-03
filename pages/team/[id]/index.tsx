@@ -23,12 +23,6 @@ const Team = () => {
   const id = router.query.id as string;
   const [team, setTeam] = useState<TeamType[]>([]);
 
-  const renderContentByQueryId = (id: string) =>
-    ({
-      men: <TeamList team={team} />,
-      women: <TeamList team={team} />,
-    }[id] || <></>);
-
   useEffect(() => {
     TokenClient.get('/team', {
       params: { gender: id === 'men' ? true : false },
@@ -46,6 +40,13 @@ const Team = () => {
         console.log(response.status);
       });
   }, [id]);
+
+  const renderContentByQueryId = (id: string) =>
+    ({
+      men: <TeamList team={team} />,
+      women: <TeamList team={team} />,
+    }[id] || <></>);
+
   return (
     <Container>
       <Header />
