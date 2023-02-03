@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { TeamIntroductionProps } from '../TeamDetails';
 
 const Container = styled.div`
@@ -27,7 +27,7 @@ const Title = styled.div`
   padding-bottom: 10px;
   border-bottom: 2px solid #1a2b64;
 
-  &:first-child {
+  &:first-of-type {
     margin-top: 0px;
   }
 `;
@@ -100,8 +100,8 @@ const TeamPlayers = ({ player, team }: TeamIntroductionProps) => {
       </PlayerPosTab>
       {position !== '전체'
         ? PosList.filter((data) => data === position).map((pos, idx) => (
-            <>
-              <Title key={idx}>{pos}</Title>
+            <Fragment key={idx}>
+              <Title>{pos}</Title>
               <CoachWrapper>
                 {player
                   ?.filter((player) => player.position_name === pos)
@@ -129,11 +129,11 @@ const TeamPlayers = ({ player, team }: TeamIntroductionProps) => {
                     </PlayerNameWrapper>
                   ))}
               </CoachWrapper>
-            </>
+            </Fragment>
           ))
         : PosList.map((pos, idx) => (
-            <>
-              <Title key={idx}>{pos}</Title>
+            <Fragment key={idx}>
+              <Title>{pos}</Title>
               <CoachWrapper>
                 {player
                   ?.filter((player) => player.position_name === pos)
@@ -146,13 +146,17 @@ const TeamPlayers = ({ player, team }: TeamIntroductionProps) => {
                         alt={'프로필사진'}
                         style={{ border: '1px solid #e0e0e0' }}
                         onClick={() =>
-                          router.push({
-                            pathname: `/team/${queryId}/playerInfo`,
-                            query: {
-                              team_id: team && team.id,
-                              player: player && player.id,
+                          router.push(
+                            {
+                              pathname: `/team/${queryId}/playerInfo`,
+                              query: {
+                                team_id: team && team.id,
+                                player: player && player.id,
+                              },
                             },
-                          })
+                            undefined,
+                            { shallow: true }
+                          )
                         }
                       />
                       <p>
@@ -161,7 +165,7 @@ const TeamPlayers = ({ player, team }: TeamIntroductionProps) => {
                     </PlayerNameWrapper>
                   ))}
               </CoachWrapper>
-            </>
+            </Fragment>
           ))}
     </Container>
   );

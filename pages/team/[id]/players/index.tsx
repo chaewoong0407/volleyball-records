@@ -67,7 +67,7 @@ const Players = () => {
     <Container>
       <Header />
       <SubNavgation />
-      <TeamDetails team={team} player={player} />
+      <TeamDetails team={team} player={player} isBlue />
     </Container>
   );
 };

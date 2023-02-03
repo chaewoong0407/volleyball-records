@@ -73,7 +73,7 @@ export const TeamReview = () => {
   }, [teamId, id]);
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setId(e.target.options.selectedIndex + 1);
+    setId(Number(e.target.value));
   };
 
   return (
@@ -82,7 +82,9 @@ export const TeamReview = () => {
         <Title>{historyData?.title}</Title>
         <TeamComboBox onChange={handleChange}>
           {selectData?.map((item) => (
-            <option key={item.id}>{item.title}</option>
+            <option key={item.id} value={item.id}>
+              {item.title}
+            </option>
           ))}
         </TeamComboBox>
       </ReviewHeader>

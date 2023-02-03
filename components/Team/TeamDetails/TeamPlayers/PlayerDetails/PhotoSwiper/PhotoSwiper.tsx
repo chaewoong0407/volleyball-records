@@ -24,7 +24,6 @@ const ImageBox = styled.div`
 `;
 
 const ImageBlock = styled.img`
-  width: 246px;
   height: 365px;
 `;
 interface PhotoProps {
@@ -52,12 +51,7 @@ export const PhotoSwiper = ({ images }: PhotoProps) => {
                 style={{ width: '100%', height: '100%' }}
               >
                 <ImageBox>
-                  <ImageBlock
-                    src={item.image_url}
-                    alt={`${item.id}`}
-                    width={248}
-                    height={365}
-                  />
+                  <ImageBlock src={item.image_url} alt={`${item.id}`} />
                 </ImageBox>
               </SwiperSlide>
             );

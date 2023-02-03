@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import React from 'react';
 import { JobType } from '../PlayerDetails';
 
 const Container = styled.div`
@@ -17,10 +16,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 18px 22px;
 
-  &:first-child {
+  &:first-of-type {
     border-right: 1px solid #e0e0e0;
   }
-  &:last-child {
+  &:last-of-type {
     border-left: 1px solid #e0e0e0;
   }
 `;
@@ -49,32 +48,26 @@ export const PlayerJob = ({ data }: PlayerJobProps) => {
         <Title>역대 시상내역</Title>
         {data &&
           data.prize.map((item) => (
-            <>
-              <Text key={item.id}>- {item.prize_name}</Text>
-            </>
+            <Text key={item.id}>- {item.prize_name}</Text>
           ))}
       </Wrapper>
       <Wrapper>
         <Title>트리플 크라운</Title>
         {data &&
           data.triple_crown.map((item) => (
-            <>
-              <Text>
-                - {item.created_at} 후위 {item.back_attack_count}개, 서브{' '}
-                {item.serve_count}개, 블로킹 {item.block_count}개
-              </Text>
-            </>
+            <Text key={item.id}>
+              - {item.created_at} 후위 {item.back_attack_count}개, 서브{' '}
+              {item.serve_count}개, 블로킹 {item.block_count}개
+            </Text>
           ))}
       </Wrapper>
       <Wrapper>
         <Title>기준기록</Title>
         {data &&
           data.reference_record.map((item) => (
-            <>
-              <Text>
-                - {item.created_at} {item.record_name}{' '}
-              </Text>
-            </>
+            <Text key={item.id}>
+              - {item.created_at} {item.record_name}{' '}
+            </Text>
           ))}
       </Wrapper>
     </Container>

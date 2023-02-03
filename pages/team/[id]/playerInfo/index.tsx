@@ -66,7 +66,7 @@ const PlayerInfo = () => {
     <Container>
       <Header />
       <SubNavgation />
-      <TeamDetails team={team} player={player} />
+      <TeamDetails team={team} player={player} isBlue />
       <Wrapper>
         <PlayerDetails player_id={playerId} team_id={id} />
       </Wrapper>

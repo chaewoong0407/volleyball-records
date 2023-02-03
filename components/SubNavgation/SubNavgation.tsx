@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 interface TabLinkProps {
-  path: boolean;
+  path: string;
 }
 
 const Container = styled.div`
@@ -25,7 +25,8 @@ const SubTabBox = styled.div`
 `;
 
 const TabLink = styled(Link)<TabLinkProps>`
-  color: ${({ path }) => (path ? `#fff` : `rgba(255, 255, 255, 0.5)`)};
+  color: ${({ path }) =>
+    path === 'true' ? '#fff' : 'rgba(255, 255, 255, 0.5)'};
   font-size: 14px;
   font-weight: bold;
   padding: 14px;
@@ -57,10 +58,10 @@ const SubNavgation = () => {
   return (
     <Container>
       <SubTabBox>
-        <TabLink href={'/team/men'} path={id === 'men'}>
+        <TabLink href={'/team/men'} path={`${id === 'men'}`}>
           남자부
         </TabLink>
-        <TabLink href={'/team/women'} path={id === 'women'}>
+        <TabLink href={'/team/women'} path={`${id === 'women'}`}>
           여자부
         </TabLink>
       </SubTabBox>

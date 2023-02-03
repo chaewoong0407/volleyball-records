@@ -275,7 +275,7 @@ const PlayerDetails = ({ team_id, player_id }: PlayerDetailProps) => {
   return (
     <Container>
       <ProfileBox>
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', gap: '30px' }}>
           <ProfileImage src={playerData?.user.profile_image} />
           <PlayerProfileWrapper>
             <PlyaerNumber>
