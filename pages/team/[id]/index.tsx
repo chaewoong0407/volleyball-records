@@ -55,4 +55,10 @@ const Team = () => {
   );
 };
 
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
+
 export default Team;

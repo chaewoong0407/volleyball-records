@@ -1,22 +1,27 @@
 import styled from '@emotion/styled';
+import { TokenClient } from 'lib/Axios';
 import { useRouter } from 'next/router';
+import { TeamType } from 'pages/team/[id]';
 import { CoachType } from 'pages/team/[id]/coach';
 import { TeamIntroductionType } from 'pages/team/[id]/introduction';
 import { PlayerType } from 'pages/team/[id]/players';
-import React from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import TeamHeader from '../TeamHeader/TeamHeader';
 import TeamCoach from './TeamCoach/TeamCoach';
 import TeamIntroduction from './TeamIntroduction/TeamIntroduction';
 import TeamPlayers from './TeamPlayers/TeamPlayers';
+import { TeamRecords } from './TeamRecords/TeamRecords';
+import { TeamReview } from './TeamReview/TeamReview';
 
 export interface TeamIntroductionProps {
   team?: TeamIntroductionType;
   coach?: CoachType;
   player?: PlayerType[];
+  isBlue?: boolean;
 }
 
 export interface ButtonProps {
-  path: boolean;
+  isActive: boolean;
 }
 
 const Container = styled.div`
@@ -32,7 +37,7 @@ const TeamWrapper = styled.div`
   gap: 20px;
 `;
 
-const TeamComboBox = styled.select`
+export const TeamComboBox = styled.select`
   width: 210px;
   height: 32px;
   padding-left: 10px;
@@ -50,26 +55,62 @@ const TeamInfoBox = styled.div`
   display: flex;
 `;
 
-const TeamDetails = ({ team, coach, player }: TeamIntroductionProps) => {
+const TeamDetails = ({
+  team,
+  coach,
+  player,
+  isBlue = false,
+}: TeamIntroductionProps) => {
   const router = useRouter();
   const page = router.pathname.split('/');
+  const id = router.query.id as string;
+  const [teamList, setTeamList] = useState<TeamType[]>([]);
+
+  useEffect(() => {
+    TokenClient.get('/team', {
+      params: { gender: id === 'men' ? true : false },
+    })
+      .then((response) => {
+        console.log(response.data);
+        console.log(response.status);
+
+        if (response.status === 200) {
+          setTeamList(response.data.data);
+        }
+      })
+      .catch((response) => {
+        console.log(response.data);
+        console.log(response.status);
+      });
+  }, [id]);
+
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    router.push({
+      pathname: window.location.pathname,
+      query: { team_id: e.target.value },
+    });
+  };
 
   const renderContentByPage = (page: string) =>
     ({
       introduction: <TeamIntroduction team={team} />,
       coach: <TeamCoach coach={coach} />,
-      players: <TeamPlayers player={player} />,
-      record: <div>팀기록</div>,
-      review: <div>총평</div>,
+      players: <TeamPlayers player={player} team={team} />,
+      record: <TeamRecords team={team} />,
+      review: <TeamReview />,
     }[page] || <></>);
   return (
     <Container>
       <TeamWrapper>
-        <TeamComboBox>
-          <option>{team && team.name}</option>
+        <TeamComboBox onChange={handleChange} value={team?.id}>
+          {teamList.map((item) => (
+            <option key={item.id} value={item.id}>
+              {item.name}
+            </option>
+          ))}
         </TeamComboBox>
         <TeamInfoBox>
-          <TeamHeader team={team} />
+          <TeamHeader team={team} isBlue={isBlue} />
         </TeamInfoBox>
         {renderContentByPage(page[3])}
       </TeamWrapper>

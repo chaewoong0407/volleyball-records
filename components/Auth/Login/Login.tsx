@@ -87,8 +87,8 @@ const SignUpWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 200px;
-`
-
+  `;
+  
 const SignUpButton = styled.button`
   font-size : 16px;
   margin-top : 20px;
@@ -96,7 +96,7 @@ const SignUpButton = styled.button`
   border : none;
   outline : none;
   background : none;
-`;
+  `;
 
 type LoginSubmitFormProps = {
   onSubmit: (form: { id: string; password: string }) => void;
@@ -172,7 +172,7 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
             <PasswordBox>
               <Input
                 placeholder='비밀번호를 입력하세요'
-                type = 'password'
+                type='password'
                 value={password}
                 onChange={handlePassword}
               />
@@ -181,12 +181,8 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
           </LoginPanel>
         </LoginBox>
         <SignUpWrapper>
-          <SignUpButton>
-            비밀번호 찾기
-          </SignUpButton>
-          <SignUpButton>
-            회원가입
-          </SignUpButton>
+          <SignUpButton>비밀번호 찾기</SignUpButton>
+          <SignUpButton>회원가입</SignUpButton>
         </SignUpWrapper>
       </Container>
     </SubmitForm>

@@ -11,16 +11,7 @@ const Container = styled.div`
   height: calc(100% - 140px);
 `;
 
-export type PlayerType = {
-  id: number;
-  name: string;
-  number: number;
-  position_name: string;
-  position_code: string;
-  profile_image: string;
-};
-
-const Players = () => {
+const Review = () => {
   const router = useRouter();
   const id = router.query.team_id;
   const [team, setTeam] = useState<TeamIntroductionType>({
@@ -31,8 +22,11 @@ const Players = () => {
     created_at: '',
     coach: '',
     performance: [],
+    team_total_record: {
+      total_win_count: 0,
+      total_lose_count: 0,
+    },
   });
-  const [player, setPlayer] = useState<PlayerType[]>([]);
 
   useEffect(() => {
     TokenClient.get('/team/introduction', { params: { team_id: id } })
@@ -48,28 +42,14 @@ const Players = () => {
         console.log(response.data);
         console.log(response.status);
       });
-
-    TokenClient.get('/team/players', { params: { team_id: id } })
-      .then((response) => {
-        console.log(response.data.data);
-        console.log(response.status);
-
-        if (response.status === 200) {
-          setPlayer(response.data.data);
-        }
-      })
-      .catch((response) => {
-        console.log(response.data);
-        console.log(response.status);
-      });
   }, [id]);
   return (
     <Container>
       <Header />
       <SubNavgation />
-      <TeamDetails team={team} player={player} isBlue />
+      <TeamDetails team={team} />
     </Container>
   );
 };
 
-export default Players;
+export default Review;
