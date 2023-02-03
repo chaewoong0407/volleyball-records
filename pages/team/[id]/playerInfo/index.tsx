@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
-import { Header, SubNavgation, TeamDetails } from 'components';
+import { Header, PlayerDetails, SubNavgation, TeamDetails } from 'components';
 import { TokenClient } from 'lib/Axios';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TeamIntroductionType } from '../introduction';
+import { PlayerType } from '../players';
 
 const Container = styled.div`
   position: relative;
@@ -11,18 +12,16 @@ const Container = styled.div`
   height: calc(100% - 140px);
 `;
 
-export type PlayerType = {
-  id: number;
-  name: string;
-  number: number;
-  position_name: string;
-  position_code: string;
-  profile_image: string;
-};
+const Wrapper = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
 
-const Players = () => {
+const PlayerInfo = () => {
   const router = useRouter();
   const id = router.query.team_id;
+  const playerId = router.query.player;
   const [team, setTeam] = useState<TeamIntroductionType>({
     id: 0,
     name: '',
@@ -68,8 +67,11 @@ const Players = () => {
       <Header />
       <SubNavgation />
       <TeamDetails team={team} player={player} isBlue />
+      <Wrapper>
+        <PlayerDetails player_id={playerId} team_id={id} />
+      </Wrapper>
     </Container>
   );
 };
 
-export default Players;
+export default PlayerInfo;
