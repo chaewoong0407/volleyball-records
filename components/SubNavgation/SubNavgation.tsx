@@ -16,6 +16,10 @@ const Container = styled.div`
   background-position: calc(50% + 205px) top;
   background-image: url('https://www.kovo.co.kr/images/common/bg_sub3.jpg');
   background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    height: 200px;
+  }
 `;
 
 const SubTabBox = styled.div`
@@ -45,6 +49,10 @@ const TeamBox = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     padding: 0 50px;
+  }
+  @media (max-width: 768px) {
+    font-size: 28px;
+    padding: 0 30px;
   }
 `;
 

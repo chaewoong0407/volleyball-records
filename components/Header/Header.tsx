@@ -10,6 +10,11 @@ const Container = styled.div`
   height: 140px;
   background-color: #fff;
   gap: 100px;
+
+  @media (max-width: 768px) {
+    gap: 50px;
+    height: 100px;
+  }
 `;
 
 const NavContent = styled(Link)`
@@ -26,7 +31,7 @@ const Header = () => {
         src='https://i.imgur.com/BAjHmEF.jpeg'
         alt={'로고'}
         width={71}
-        height={74}
+        height={70}
       />
       <NavContent href={'/stat'}>STATS</NavContent>
     </Container>
