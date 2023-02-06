@@ -24,6 +24,10 @@ const Title = styled.div`
   font-size: 18px;
   color: #0e76bc;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const ReviewWrapper = styled.div`
@@ -36,6 +40,11 @@ const ReviewWrapper = styled.div`
   font-weight: bold;
   white-space: pre-wrap;
   margin: 10px 0 100px 0;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    padding: 26px 30px 25px 30px;
+  }
 `;
 
 type SelectType = {

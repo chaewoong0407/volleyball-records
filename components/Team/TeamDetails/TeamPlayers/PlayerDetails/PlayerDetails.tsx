@@ -123,6 +123,10 @@ export const RecordTitle = styled.div`
   font-size: 16px;
   color: #0e76bc;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const RecordBox = styled.div`
