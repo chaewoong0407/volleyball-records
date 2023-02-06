@@ -16,6 +16,49 @@ interface MenuTypeBoxProps {
   isActive: boolean;
 }
 
+export const PerformanceWrapper = styled.div`
+  margin: 10px 0 100px 0;
+  width: 100%;
+  max-width: 960px;
+  border-top: 2px solid #1a2b64;
+
+  @media (max-width: 768px) {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+  }
+
+  th {
+    font-size: 14px;
+    padding: 15px 0;
+    color: #1a2b64;
+    background: #f6f7f8;
+    border-bottom: 1px solid #e0dfe1;
+
+    @media (max-width: 768px) {
+      width: 73.33px;
+      font-size: 12px;
+    }
+  }
+  td {
+    font-size: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0dfe1;
+    text-align: center;
+    color: #767676;
+    font-weight: 700px;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+`;
+
 const Container = styled.div`
   width: 100%;
   max-width: 960px;
@@ -31,11 +74,23 @@ const TeamBox = styled.div`
   border: 1px solid #e0e0e0;
   border-radius: 3px;
   padding-left: 30px;
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    justify-content: center;
+  }
+  @media (max-width: 500px) {
+    gap: 40px;
+  }
 `;
 
 const TeamLogo = styled.img`
   width: 150px;
   height: 112px;
+
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 72px;
+  }
 `;
 
 const TeamNameBox = styled.div`
@@ -47,6 +102,14 @@ const TeamNameBox = styled.div`
   color: #253032;
   font-weight: bold;
   font-size: 18px;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    font-size: 16px;
+  }
+  @media (max-width: 500px) {
+    width: unset;
+  }
 `;
 
 const ScoreBox = styled.div`
@@ -55,6 +118,19 @@ const ScoreBox = styled.div`
   height: 100%;
   display: flex;
   gap: 10px;
+
+  @media (max-width: 1050px) {
+    margin-left: 70px;
+  }
+  @media (max-width: 980px) {
+    margin-left: 50px;
+  }
+  @media (max-width: 925px) {
+    margin-left: 30px;
+  }
+  @media (max-width: 768px) {
+    margin-left: 0px;
+  }
 `;
 
 const WinCircle = styled.div`
@@ -68,6 +144,11 @@ const WinCircle = styled.div`
   font-size: 14px;
   font-weight: bold;
   border-radius: 100%;
+  @media (max-width: 768px) {
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+  }
 `;
 const LoseCircle = styled.div`
   background-color: #767676;
@@ -80,18 +161,34 @@ const LoseCircle = styled.div`
   font-size: 14px;
   font-weight: bold;
   border-radius: 100%;
+
+  @media (max-width: 768px) {
+    margin-left: 25px;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+  }
+  @media (max-width: 500px) {
+    margin-left: 0;
+  }
 `;
 
 const Text = styled.div`
   color: #1a2b64;
   font-size: 14px;
   font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const MenuBox = styled.div`
   display: flex;
   height: 50px;
   margin-top: 15px;
+  @media (max-width: 768px) {
+    height: 40px;
+  }
 `;
 
 const MenuBlock = styled.div<MenuTypeBoxProps>`
@@ -103,9 +200,28 @@ const MenuBlock = styled.div<MenuTypeBoxProps>`
   background: ${({ isActive }) => (isActive ? '#0e76bc' : '#e5e6e7')};
   height: 50px;
   font-size: 15px;
+  border-right: 1px solid #e0e0e0;
   color: ${({ isActive }) => (isActive ? '#fff' : '#333')};
+
+  &:last-child {
+    border: 0;
+  }
+
+  @media (max-width: 768px) {
+    height: 40px;
+    font-size: 13px;
+  }
 `;
 
+const Flexbox = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    gap: 5px;
+  }
+`;
 export type AttackType = {
   attack: number;
   attack_miss: number;
@@ -164,8 +280,10 @@ export const TeamRecords = ({ team }: TeamRecordsProps) => {
   return (
     <Container>
       <TeamBox>
-        <TeamLogo src={team?.team_logo} alt={'팀 로고'} />
-        <TeamNameBox>{team?.name}</TeamNameBox>
+        <Flexbox>
+          <TeamLogo src={team?.team_logo} alt={'팀 로고'} />
+          <TeamNameBox>{team?.name}</TeamNameBox>
+        </Flexbox>
         <ScoreBox>
           <WinCircle>승</WinCircle>
           <Text>{team?.team_total_record?.total_win_count}</Text>

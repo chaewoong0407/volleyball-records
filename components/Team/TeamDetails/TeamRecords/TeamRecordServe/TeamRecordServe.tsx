@@ -1,39 +1,8 @@
-import styled from '@emotion/styled';
 import { TokenClient } from 'lib/Axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { RecordTitle } from '../../TeamPlayers/PlayerDetails/PlayerDetails';
-import { ServeType } from '../TeamRecords';
-
-const PerformanceWrapper = styled.div`
-  margin: 10px 0 100px 0;
-  width: 100%;
-  max-width: 960px;
-  border-top: 2px solid #1a2b64;
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    table-layout: fixed;
-  }
-
-  th {
-    font-size: 14px;
-    padding: 15px 0;
-    color: #1a2b64;
-    background: #f6f7f8;
-    border-bottom: 1px solid #e0dfe1;
-  }
-  td {
-    font-size: 14px;
-    padding: 15px 0;
-    border-bottom: 1px solid #e0dfe1;
-    text-align: center;
-    color: #767676;
-    font-weight: 700px;
-  }
-`;
+import { PerformanceWrapper, ServeType } from '../TeamRecords';
 
 export const TeamRecordServe = () => {
   const [serveData, setServeData] = useState<ServeType>();
