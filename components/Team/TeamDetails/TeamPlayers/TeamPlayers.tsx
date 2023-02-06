@@ -17,6 +17,11 @@ const CoachWrapper = styled.div`
   padding: 20px 0 30px 10px;
   border-bottom: 1px solid #d1d5e0;
   gap: 35px;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
 `;
 
 const Title = styled.div`
@@ -29,6 +34,10 @@ const Title = styled.div`
 
   &:first-of-type {
     margin-top: 0px;
+  }
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    font-size: 14px;
   }
 `;
 
@@ -45,6 +54,13 @@ const PlayerNameWrapper = styled.div`
     color: #767676;
     margin-top: 10px;
     text-align: center;
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 10px;
   }
 `;
 
@@ -53,7 +69,11 @@ const PlayerPosTab = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 35px;
+  @media (max-width: 768px) {
+    gap: 25px;
+  }
 `;
 
 interface PositionProps {
@@ -64,6 +84,21 @@ const PlayerPosition = styled.div<PositionProps>`
   font-size: 15px;
   font-weight: ${({ isPosition }) => (isPosition ? 'bold' : 'medium')};
   color: ${({ isPosition }) => (isPosition ? '#0e76bc' : '#767676')};
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+`;
+
+const PlayerImg = styled.img`
+  width: 180px;
+  height: 200px;
+  border: 1px solid #e0e0e0;
+
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 130px;
+  }
 `;
 const TeamPlayers = ({ player, team }: TeamIntroductionProps) => {
   const router = useRouter();
@@ -107,12 +142,9 @@ const TeamPlayers = ({ player, team }: TeamIntroductionProps) => {
                   ?.filter((player) => player.position_name === pos)
                   .map((player) => (
                     <PlayerNameWrapper key={player.id}>
-                      <img
-                        width={180}
-                        height={200}
+                      <PlayerImg
                         src={player.profile_image}
                         alt={'프로필사진'}
-                        style={{ border: '1px solid #e0e0e0' }}
                         onClick={() =>
                           router.push({
                             pathname: `/team/${queryId}/playerInfo`,
@@ -139,12 +171,9 @@ const TeamPlayers = ({ player, team }: TeamIntroductionProps) => {
                   ?.filter((player) => player.position_name === pos)
                   .map((player) => (
                     <PlayerNameWrapper key={player.id}>
-                      <img
-                        width={180}
-                        height={200}
+                      <PlayerImg
                         src={player.profile_image}
                         alt={'프로필사진'}
-                        style={{ border: '1px solid #e0e0e0' }}
                         onClick={() =>
                           router.push(
                             {
