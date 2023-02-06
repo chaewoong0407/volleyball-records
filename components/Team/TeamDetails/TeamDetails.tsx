@@ -35,6 +35,14 @@ const TeamWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media (max-width: 1200px) {
+    width: 100%;
+    padding: 0 50px;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 30px;
+  }
 `;
 
 export const TeamComboBox = styled.select`
@@ -49,6 +57,12 @@ export const TeamComboBox = styled.select`
   background: #f8f8f8
     url('https://www.kovo.co.kr/images/bg/bg_select_table.png') right center
     no-repeat;
+
+  @media (max-width: 768px) {
+    width: 170px;
+    height: 28px;
+    font-size: 12px;
+  }
 `;
 
 const TeamInfoBox = styled.div`

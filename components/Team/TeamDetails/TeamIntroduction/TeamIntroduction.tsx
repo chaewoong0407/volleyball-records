@@ -17,6 +17,14 @@ const TeamWrapper = styled.div`
   border-radius: 3px;
   border: 1px solid #e0e0e0;
   gap: 50px;
+
+  @media (max-width: 768px) {
+    height: 230px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
 `;
 
 const TeamTitleWrapper = styled.div`
@@ -26,16 +34,30 @@ const TeamTitleWrapper = styled.div`
   height: 100%;
   gap: 23px;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    padding: 0;
+    gap: 16px;
+    height: unset;
+    align-items: center;
+    justify-content: flex-start;
+  }
 `;
 const TeamTitle = styled.div`
   font-size: 24px;
   font-weight: bold;
   color: #253032;
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 const TeamCoach = styled.div`
   font-size: 14px;
   font-weight: bold;
   color: #767676;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const TeamSubTitle = styled.div`
@@ -43,6 +65,9 @@ const TeamSubTitle = styled.div`
   font-size: 16px;
   color: #0e76bc;
   font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const PerformanceWrapper = styled.div`
@@ -50,6 +75,7 @@ const PerformanceWrapper = styled.div`
   width: 100%;
   max-width: 960px;
   border-top: 2px solid #1a2b64;
+  overflow-x: auto;
 
   table {
     width: 100%;
@@ -64,6 +90,10 @@ const PerformanceWrapper = styled.div`
     color: #1a2b64;
     background: #f6f7f8;
     border-bottom: 1px solid #e0dfe1;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
   td {
     font-size: 14px;
@@ -72,19 +102,29 @@ const PerformanceWrapper = styled.div`
     text-align: center;
     color: #767676;
     font-weight: 700px;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+`;
+
+const Logo = styled.img`
+  width: 180px;
+  height: 135px;
+  margin-left: 25px;
+
+  @media (max-width: 768px) {
+    width: 125px;
+    height: 95px;
+    margin-left: 0;
   }
 `;
 export const TeamIntroduction = ({ team }: TeamIntroductionProps) => {
   return (
     <Container>
       <TeamWrapper>
-        <img
-          src={team && team.team_logo}
-          alt={'로고'}
-          width={180}
-          height={135}
-          style={{ marginLeft: '25px' }}
-        />
+        <Logo src={team && team.team_logo} alt={'로고'} />
         <TeamTitleWrapper>
           <TeamTitle>{team && team.name}</TeamTitle>
           <TeamCoach>
@@ -97,10 +137,10 @@ export const TeamIntroduction = ({ team }: TeamIntroductionProps) => {
         <table>
           <thead>
             <tr>
-              <th>번호</th>
+              <th style={{ width: '130px' }}>번호</th>
               <th style={{ width: '320px' }}>대회명</th>
-              <th>성적</th>
-              <th>전적</th>
+              <th style={{ width: '130px' }}>성적</th>
+              <th style={{ width: '130px' }}>전적</th>
               <th style={{ width: '250px' }}>대회 기간</th>
             </tr>
           </thead>

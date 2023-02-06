@@ -4,7 +4,7 @@ import React from 'react';
 import { TeamIntroductionProps } from '../TeamDetails/TeamDetails';
 
 const TeamInfoButton = styled.button`
-  width: 192px;
+  flex: 1;
   height: 50px;
   text-align: center;
   font-size: 15px;
@@ -14,6 +14,11 @@ const TeamInfoButton = styled.button`
 
   &:last-child {
     border: none;
+  }
+  @media (max-width: 768px) {
+    width: 63px;
+    height: 35px;
+    font-size: 10px;
   }
 `;
 
@@ -44,7 +49,14 @@ const TeamHeader = ({ team, isBlue }: TeamIntroductionProps) => {
     },
   ];
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        width: '100%',
+        maxWidth: '960px',
+      }}
+    >
       {List.map((data, idx) => (
         <TeamInfoButton
           key={idx}
