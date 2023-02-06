@@ -37,6 +37,7 @@ const LoginPanel = styled.div`
 const IdBox = styled.div`
   display: flex;
   width: 100%;
+  height: 48px;
   align-items: center;
   border: 1px solid #dadada;
   border-radius: 6px 6px 0 0;

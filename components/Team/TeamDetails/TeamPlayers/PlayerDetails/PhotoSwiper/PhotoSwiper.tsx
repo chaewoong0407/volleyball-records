@@ -25,6 +25,10 @@ const ImageBox = styled.div`
 
 const ImageBlock = styled.img`
   height: 365px;
+
+  @media (max-width: 768px) {
+    height: 265px;
+  }
 `;
 interface PhotoProps {
   images: PhotoGalleryType[] | undefined;

@@ -22,6 +22,11 @@ const Wrapper = styled.div`
   &:last-of-type {
     border-left: 1px solid #e0e0e0;
   }
+
+  @media (max-width: 768px) {
+    padding: 18px 14px;
+    text-align: center;
+  }
 `;
 
 const Title = styled.div`
@@ -29,12 +34,19 @@ const Title = styled.div`
   margin-bottom: 12px;
   font-weight: bold;
   color: #1a2b64;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const Text = styled.div`
   font-size: 13px;
   color: rgb(118, 118, 118);
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 interface PlayerJobProps {

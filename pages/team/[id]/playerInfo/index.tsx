@@ -16,6 +16,13 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    padding: 0 50px;
+  }
+  @media (max-width: 768px) {
+    padding: 0 30px;
+  }
 `;
 
 const PlayerInfo = () => {

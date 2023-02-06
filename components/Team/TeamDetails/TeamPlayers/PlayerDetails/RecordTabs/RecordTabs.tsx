@@ -31,11 +31,27 @@ const AttackTypeBox = styled.div<AttackTypeBoxProps>`
   border-right: 1px solid #e0e0e0;
   border-top: 1px solid #e0e0e0;
 
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
   &:first-of-type {
     border-top: none;
   }
 `;
 
+const Box = styled.div`
+  width: 411px;
+
+  @media (max-width: 768px) {
+    width: 200px;
+  }
+  @media (max-width: 550px) {
+    width: 50px;
+  }
+  @media (max-width: 470px) {
+    width: 0px;
+  }
+`;
 interface RecordTabProps {
   data: DetailRecordType | undefined;
 }
@@ -71,7 +87,7 @@ export const RecordTabs = ({ data }: RecordTabProps) => {
           </AttackTypeBox>
         ))}
       </AttackTypeWrapper>
-      <div style={{ width: '411px' }}></div>
+      <Box></Box>
       {menuArr[currentTab].content}
     </>
   );

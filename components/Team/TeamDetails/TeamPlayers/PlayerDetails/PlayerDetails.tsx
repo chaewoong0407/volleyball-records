@@ -19,7 +19,6 @@ const ProfileBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 650px;
   border: 1px solid #e0e0e0;
   border-radius: 3px;
   margin-top: 30px;
@@ -28,6 +27,14 @@ const ProfileBox = styled.div`
 const ProfileImage = styled.img`
   width: 507px;
   height: 498px;
+  @media (max-width: 768px) {
+    width: 400px;
+    height: 400px;
+  }
+  @media (max-width: 600px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const PlayerProfileWrapper = styled.div`
@@ -36,12 +43,26 @@ const PlayerProfileWrapper = styled.div`
   height: 498px;
   flex-direction: column;
   padding-top: 86px;
+
+  @media (max-width: 600px) {
+    padding-top: 0px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const PlyaerNumber = styled.div`
   color: #253032;
   font-size: 24px;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    text-align: center;
+  }
 `;
 
 const PlayerName = styled.div`
@@ -49,6 +70,10 @@ const PlayerName = styled.div`
   font-size: 28px;
   padding-top: 10px;
   font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 22px;
+    text-align: center;
+  }
 `;
 
 const ProfileContent = styled.div`
@@ -56,21 +81,46 @@ const ProfileContent = styled.div`
   margin-top: 33px;
   padding-top: 34px;
   border-top: 1px solid #e0e0e0;
+
+  @media (max-width: 980px) {
+    width: unset;
+    margin-right: 20px;
+  }
+  @media (max-width: 600px) {
+    border: none;
+    text-align: center;
+    margin-top: 0px;
+    margin-right: 0px;
+    padding: 10px 0 20px 0;
+  }
 `;
 const ProfileBlock = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
+
+  @media (max-width: 980px) {
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+  }
   h4 {
     color: #253032;
     font-weight: bold;
     font-size: 14px;
     margin: 3px;
     width: 60px;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
   span {
     color: #767676;
     font-size: 14px;
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -85,6 +135,10 @@ const RecordTable = styled.table`
     color: #767676;
     text-align: center;
     border-top: 1px solid #e0e0e0;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
   td + td {
     border-left: 1px solid #e0e0e0;
@@ -100,6 +154,9 @@ const TableHeader = styled.thead`
     height: 50px;
     text-align: center;
     border-top: 1px solid #e0e0e0;
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
   th + th {
     border-left: 1px solid #e0e0e0;
@@ -115,6 +172,9 @@ const TableBody = styled.tbody`
     border-top: 1px solid #e0e0e0;
     border-right: 1px solid #e0e0e0;
     background-color: #ffffff;
+    @media (max-width: 768px) {
+      font-size: 10px;
+    }
   }
 `;
 
@@ -135,6 +195,14 @@ const RecordBox = styled.div`
   height: 247px;
   border: 1px solid #e0e0e0;
   margin-top: 15px;
+`;
+
+const FlexBox = styled.div`
+  display: flex;
+  gap: 30px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 export type AttackType = {
@@ -279,7 +347,7 @@ const PlayerDetails = ({ team_id, player_id }: PlayerDetailProps) => {
   return (
     <Container>
       <ProfileBox>
-        <div style={{ display: 'flex', gap: '30px' }}>
+        <FlexBox style={{ display: 'flex', gap: '30px' }}>
           <ProfileImage src={playerData?.user.profile_image} />
           <PlayerProfileWrapper>
             <PlyaerNumber>
@@ -309,7 +377,7 @@ const PlayerDetails = ({ team_id, player_id }: PlayerDetailProps) => {
               </ProfileBlock>
             </ProfileContent>
           </PlayerProfileWrapper>
-        </div>
+        </FlexBox>
         <RecordTable>
           <TableHeader>
             <tr>

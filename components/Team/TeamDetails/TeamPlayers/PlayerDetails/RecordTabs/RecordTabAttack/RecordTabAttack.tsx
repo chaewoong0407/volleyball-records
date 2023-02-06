@@ -31,6 +31,10 @@ export const PlayerStat = styled.div`
       background-color: #f6f7f8;
       border-bottom: 1px solid #e0e0e0;
       margin: 0;
+
+      @media (max-width: 768px) {
+        font-size: 10px;
+      }
     }
 
     dd {
@@ -39,6 +43,10 @@ export const PlayerStat = styled.div`
       font-size: 14px;
       margin: 0;
       font-weight: 500;
+
+      @media (max-width: 768px) {
+        font-size: 10px;
+      }
     }
   }
 `;
