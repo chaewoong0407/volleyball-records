@@ -44,7 +44,7 @@ const TeamHeader = ({ team, isBlue }: TeamIntroductionProps) => {
       href: `/team/${queryId}/record`,
     },
     {
-      name: '총평',
+      name: '역사',
       href: `/team/${queryId}/review`,
     },
   ];
