@@ -15,6 +15,11 @@ const TeamWrapper = styled.div`
   margin: 50px auto 0;
   display: flex;
   gap: 20px;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    padding: 0 50px;
+  }
 `;
 const TeamBox = styled.div`
   display: flex;

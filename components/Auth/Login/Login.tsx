@@ -20,10 +20,18 @@ const LoginBox = styled.div`
   border-radius: 6px;
   background-color: #fff;
   box-shadow: 0 5px 8px 0 rgb(68 68 68 / 4%);
+
+  @media (max-width: 768px) {
+    width: 80%;
+    margin: 0 auto;
+  }
 `;
 
 const LoginPanel = styled.div`
   padding: 20px 28px;
+  @media (max-width: 768px) {
+    padding: 18px;
+  }
 `;
 
 const IdBox = styled.div`
@@ -32,7 +40,10 @@ const IdBox = styled.div`
   align-items: center;
   border: 1px solid #dadada;
   border-radius: 6px 6px 0 0;
-  height: 48px;
+
+  @media (max-width: 768px) {
+    height: 40px;
+  }
 `;
 const PasswordBox = styled.div`
   display: flex;
@@ -41,6 +52,9 @@ const PasswordBox = styled.div`
   border: 1px solid #dadada;
   border-radius: 0 0 6px 6px;
   height: 48px;
+  @media (max-width: 768px) {
+    height: 40px;
+  }
 `;
 
 const Input = styled.input`
@@ -62,6 +76,14 @@ const SubmitButton = styled.button`
   font-weight: 700;
   line-height: 24px;
   color: #fff;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+  }
 `;
 
 export const SubmitForm = styled.form`
@@ -77,7 +99,10 @@ const SignUpWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 200px;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const SignUpButton = styled.button`
@@ -87,6 +112,18 @@ const SignUpButton = styled.button`
   border: none;
   outline: none;
   background: none;
+
+  @media (max-width: 768px) {
+    margin-top: 15px;
+    font-size: 12px;
+  }
+`;
+
+const Logo = styled.img`
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 120px;
+  }
 `;
 
 type LoginSubmitFormProps = {
@@ -148,7 +185,7 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
     <SubmitForm onSubmit={handleSubmit}>
       <Container>
         <div style={{ paddingBottom: '48px' }}>
-          <img src='https://i.imgur.com/BAjHmEF.jpeg' width={240} />
+          <Logo src='https://i.imgur.com/BAjHmEF.jpeg' width={240} />
         </div>
         <LoginBox>
           <LoginPanel>

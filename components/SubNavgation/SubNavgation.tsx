@@ -41,6 +41,11 @@ const TeamBox = styled.div`
   font-size: 40px;
   font-weight: bold;
   color: #fff;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    padding: 0 50px;
+  }
 `;
 
 const SubNavgation = () => {
