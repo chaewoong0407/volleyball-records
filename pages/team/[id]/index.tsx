@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import { Header, TeamList, SubNavgation } from 'components';
 import { TokenClient } from 'lib/Axios';
-import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Container = styled.div`
   position: relative;
@@ -25,7 +24,7 @@ const Team = () => {
   const [team, setTeam] = useState<TeamType[]>([]);
   const gender = id === 'men' ? true : false;
 
-  const getTeam = useCallback(() => {
+  useEffect(() => {
     TokenClient.get('/team', {
       params: { gender: gender },
     })
@@ -41,12 +40,10 @@ const Team = () => {
         console.log(err);
         if (err.response.data.status_code === 401) {
           console.log(err.response.data.message);
+          router.replace('/', undefined, { shallow: true });
         }
       });
-  }, [gender]);
-  useEffect(() => {
-    getTeam();
-  }, [getTeam]);
+  }, [gender, router]);
 
   const renderContentByQueryId = (id: string) =>
     ({

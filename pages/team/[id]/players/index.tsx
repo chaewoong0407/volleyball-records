@@ -45,7 +45,7 @@ const Players = () => {
         }
       })
       .catch((err) => {
-        if (err.response.data.status_code === 400) {
+        if (err.response.data.status_code === 401) {
           router.replace('/', undefined, { shallow: true });
         }
       });

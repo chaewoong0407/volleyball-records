@@ -64,7 +64,9 @@ const PlayerInfo = () => {
         }
       })
       .catch((err) => {
-        console.log(err.data);
+        if (err.response.data.status_code === 401) {
+          router.replace('/', undefined, { shallow: true });
+        }
       });
   }, [id, router]);
   return (
