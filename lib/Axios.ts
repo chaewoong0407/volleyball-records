@@ -1,7 +1,8 @@
 import axios, { AxiosInstance } from 'axios';
 import { GetServerSidePropsContext } from 'next';
-import SERVER from '../config/config.json';
 import { getToken } from './Storage';
+
+const SERVER = process.env.NEXT_PUBLIC_VOLLEYBALL_API_URL;
 
 const context = <GetServerSidePropsContext>{};
 
@@ -10,14 +11,14 @@ const isServer = () => {
 };
 
 export const client: AxiosInstance = axios.create({
-  baseURL: SERVER.SERVER,
+  baseURL: SERVER,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
 export const TokenClient: AxiosInstance = axios.create({
-  baseURL: SERVER.SERVER,
+  baseURL: SERVER,
   headers: {
     'Content-Type': 'application/json',
   },
