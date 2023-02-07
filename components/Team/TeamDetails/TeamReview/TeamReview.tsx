@@ -67,9 +67,6 @@ export const TeamReview = () => {
   useEffect(() => {
     TokenClient.get(`/team/history/${teamId}`, { params: { content_id: id } })
       .then((response) => {
-        console.log(response.data.data);
-        console.log(response.status);
-
         if (response.status === 200) {
           setSelectData(response.data.data.history_list);
           setHistoryData(response.data.data.history_detail);

@@ -12,9 +12,6 @@ export const TeamRecordServe = () => {
   useEffect(() => {
     TokenClient.get('/team/record/serve', { params: { team_id: id } })
       .then((response) => {
-        console.log(response.data.data);
-        console.log(response.status);
-
         if (response.status === 200) {
           setServeData(response.data.data);
         }

@@ -333,9 +333,6 @@ const PlayerDetails = ({ team_id, player_id }: PlayerDetailProps) => {
       params: { team_id: team_id },
     })
       .then((response) => {
-        console.log(response.data.data);
-        console.log(response.status);
-
         if (response.status === 200) {
           setPlayerData(response.data.data);
         }

@@ -44,9 +44,6 @@ const Coach = () => {
   useEffect(() => {
     TokenClient.get('/team/introduction', { params: { team_id: id } })
       .then((response) => {
-        console.log(response.data);
-        console.log(response.status);
-
         if (response.status === 200) {
           setTeam(response.data.data);
         }
@@ -58,9 +55,6 @@ const Coach = () => {
 
     TokenClient.get('/team/coach', { params: { team_id: id } })
       .then((response) => {
-        console.log(response.data.data);
-        console.log(response.status);
-
         if (response.status === 200) {
           setCoach(response.data.data);
         }

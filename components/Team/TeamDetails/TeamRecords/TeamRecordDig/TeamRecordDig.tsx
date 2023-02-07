@@ -12,9 +12,6 @@ export const TeamRecordDig = () => {
   useEffect(() => {
     TokenClient.get('/team/record/dig', { params: { team_id: id } })
       .then((response) => {
-        console.log(response.data.data);
-        console.log(response.status);
-
         if (response.status === 200) {
           setDigData(response.data.data);
         }

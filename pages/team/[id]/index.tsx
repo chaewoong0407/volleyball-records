@@ -29,9 +29,6 @@ const Team = () => {
       params: { gender: gender },
     })
       .then((response) => {
-        console.log(response.data);
-        console.log(response.status);
-
         if (response.status === 200) {
           setTeam(response.data.data);
         }

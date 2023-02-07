@@ -12,9 +12,6 @@ export const TeamRecordBlock = () => {
   useEffect(() => {
     TokenClient.get('/team/record/block', { params: { team_id: id } })
       .then((response) => {
-        console.log(response.data.data);
-        console.log(response.status);
-
         if (response.status === 200) {
           setBlockData(response.data.data);
         }

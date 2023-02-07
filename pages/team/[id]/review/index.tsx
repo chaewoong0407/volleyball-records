@@ -31,9 +31,6 @@ const Review = () => {
   useEffect(() => {
     TokenClient.get('/team/introduction', { params: { team_id: id } })
       .then((response) => {
-        console.log(response.data);
-        console.log(response.status);
-
         if (response.status === 200) {
           setTeam(response.data.data);
         }

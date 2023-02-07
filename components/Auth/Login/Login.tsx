@@ -165,8 +165,6 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
         password: password,
       })
       .then((response) => {
-        console.log(response.data.data);
-
         if (response.status === 200) {
           Cookies.set('token', response.data.data.result.token);
           console.log(getToken());

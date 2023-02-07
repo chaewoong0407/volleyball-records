@@ -15,10 +15,10 @@ export const PlayerStat = styled.div`
     box-sizing: border-box;
     margin: 0;
 
-    &:nth-child(3) {
+    &:nth-of-type(3) {
       border-right: none;
     }
-    &:nth-child(6) {
+    &:nth-of-type(6) {
       border-right: none;
     }
 

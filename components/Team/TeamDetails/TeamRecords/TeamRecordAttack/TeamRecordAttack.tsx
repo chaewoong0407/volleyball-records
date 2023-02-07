@@ -12,9 +12,6 @@ export const TeamRecordItem = () => {
   useEffect(() => {
     TokenClient.get('/team/record/attack', { params: { team_id: id } })
       .then((response) => {
-        console.log(response.data.data);
-        console.log(response.status);
-
         if (response.status === 200) {
           setAttackData(response.data.data);
         }
