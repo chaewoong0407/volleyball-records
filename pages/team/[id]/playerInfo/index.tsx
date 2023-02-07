@@ -50,9 +50,8 @@ const PlayerInfo = () => {
           setTeam(response.data.data);
         }
       })
-      .catch((response) => {
-        console.log(response.data);
-        console.log(response.status);
+      .catch((err) => {
+        console.log(err.data);
       });
 
     TokenClient.get('/team/players', { params: { team_id: id } })
@@ -64,11 +63,10 @@ const PlayerInfo = () => {
           setPlayer(response.data.data);
         }
       })
-      .catch((response) => {
-        console.log(response.data);
-        console.log(response.status);
+      .catch((err) => {
+        console.log(err.data);
       });
-  }, [id]);
+  }, [id, router]);
   return (
     <Container>
       <Header />

@@ -60,11 +60,12 @@ const Introduction = () => {
           setTeam(response.data.data);
         }
       })
-      .catch((response) => {
-        console.log(response.data);
-        console.log(response.status);
+      .catch((err) => {
+        if (err.response.data.status_code === 400) {
+          router.replace('/', undefined, { shallow: true });
+        }
       });
-  }, [id]);
+  }, [id, router]);
   return (
     <Container>
       <Header />

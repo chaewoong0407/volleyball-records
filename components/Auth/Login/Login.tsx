@@ -167,17 +167,20 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
         console.log(response.data);
         console.log(response.status);
         console.log(response.data.token);
-        console.log(getToken());
 
         if (response.status === 200) {
-          sessionStorage.setItem('volleyball-token', TestToken);
+          localStorage.setItem('volleyball-token', TestToken);
           alert('로그인 성공!');
+          console.log(getToken());
           router.push('/team/men');
         }
       })
-      .catch((response) => {
-        console.log(response.data);
-        console.log(response.status);
+      .catch((err) => {
+        if (err.response.data.status_code === 401) {
+          alert(err.response.data.message);
+        } else if (err.response.data.status_code === 500) {
+          alert('가입되지 않은 아이디입니다');
+        }
       });
   };
 

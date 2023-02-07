@@ -1,7 +1,7 @@
 export const getToken = () => {
-  return typeof window !== 'undefined'
-    ? sessionStorage.getItem('volleyball-token')
-    : null;
+  if (typeof window !== 'undefined') {
+    return localStorage.getItem('volleyball-token');
+  }
 };
 
 export const TestToken =

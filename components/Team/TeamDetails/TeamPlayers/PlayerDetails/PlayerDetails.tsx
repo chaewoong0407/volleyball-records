@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { TokenClient } from 'lib/Axios';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { PhotoSwiper } from './PhotoSwiper/PhotoSwiper';
 import { PlayerJob } from './PlayerJob/PlayerJob';
@@ -323,6 +324,7 @@ interface PlayerData {
 }
 
 const PlayerDetails = ({ team_id, player_id }: PlayerDetailProps) => {
+  const router = useRouter();
   // eslint-disable-next-line @typescript-eslint/ban-types
   const [playerData, setPlayerData] = useState<PlayerData>();
 
@@ -338,11 +340,12 @@ const PlayerDetails = ({ team_id, player_id }: PlayerDetailProps) => {
           setPlayerData(response.data.data);
         }
       })
-      .catch((response) => {
-        console.log(response.data);
-        console.log(response.status);
+      .catch((err) => {
+        if (err.response.data.status_code === 400) {
+          router.replace('/', undefined, { shallow: true });
+        }
       });
-  }, [team_id, player_id]);
+  }, [team_id, player_id, router]);
 
   return (
     <Container>

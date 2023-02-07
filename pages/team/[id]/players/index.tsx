@@ -44,9 +44,10 @@ const Players = () => {
           setTeam(response.data.data);
         }
       })
-      .catch((response) => {
-        console.log(response.data);
-        console.log(response.status);
+      .catch((err) => {
+        if (err.response.data.status_code === 400) {
+          router.replace('/', undefined, { shallow: true });
+        }
       });
 
     TokenClient.get('/team/players', { params: { team_id: id } })
@@ -58,11 +59,10 @@ const Players = () => {
           setPlayer(response.data.data);
         }
       })
-      .catch((response) => {
-        console.log(response.data);
-        console.log(response.status);
+      .catch((err) => {
+        console.log(err.data);
       });
-  }, [id]);
+  }, [id, router]);
   return (
     <Container>
       <Header />

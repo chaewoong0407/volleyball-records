@@ -35,11 +35,13 @@ const Team = () => {
           setTeam(response.data.data);
         }
       })
-      .catch((response) => {
-        console.log(response.data);
-        console.log(response.status);
+      .catch((err) => {
+        if (err.response.data.status_code === 400) {
+          alert(err.response.data.message);
+          router.replace('/', undefined, { shallow: true });
+        }
       });
-  }, [id]);
+  }, [id, router]);
 
   const renderContentByQueryId = (id: string) =>
     ({
