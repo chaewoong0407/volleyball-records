@@ -30,7 +30,7 @@ const Container = styled.div`
 `;
 
 const TeamWrapper = styled.div`
-  width: 1200px;
+  width: 960px;
   margin: 50px auto 0;
   display: flex;
   flex-direction: column;

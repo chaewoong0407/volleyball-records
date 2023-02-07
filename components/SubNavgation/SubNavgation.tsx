@@ -39,7 +39,7 @@ const TabLink = styled(Link)<TabLinkProps>`
 const TeamBox = styled.div`
   display: flex;
   align-items: center;
-  width: 1200px;
+  width: 960px;
   margin: 0 auto;
   height: 180px;
   font-size: 40px;

@@ -11,7 +11,7 @@ const Container = styled.div`
   height: 100%;
 `;
 const TeamWrapper = styled.div`
-  width: 1200px;
+  width: 960px;
   margin: 50px auto 0;
   display: flex;
   flex-wrap: wrap;

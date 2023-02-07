@@ -1,7 +1,7 @@
+import Cookies from 'js-cookie';
+
 export const getToken = () => {
-  if (typeof window !== 'undefined') {
-    return localStorage.getItem('volleyball-token');
-  }
+  return Cookies.get('token');
 };
 
 export const TestToken =

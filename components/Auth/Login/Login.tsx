@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import Cookies from 'js-cookie';
 import { client } from 'lib/Axios';
-import { getToken, TestToken } from 'lib/Storage';
+import { getToken } from 'lib/Storage';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
@@ -164,13 +165,10 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
         password: password,
       })
       .then((response) => {
-        console.log(response.data);
-        console.log(response.status);
-        console.log(response.data.token);
+        console.log(response.data.data);
 
         if (response.status === 200) {
-          localStorage.setItem('volleyball-token', TestToken);
-          alert('로그인 성공!');
+          Cookies.set('token', response.data.data.result.token);
           console.log(getToken());
           router.push('/team/men');
         }
