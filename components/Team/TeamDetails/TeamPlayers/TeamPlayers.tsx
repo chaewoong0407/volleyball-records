@@ -84,6 +84,7 @@ const PlayerPosition = styled.div<PositionProps>`
   font-size: 15px;
   font-weight: ${({ isPosition }) => (isPosition ? 'bold' : 'medium')};
   color: ${({ isPosition }) => (isPosition ? '#0e76bc' : '#767676')};
+  cursor: pointer;
 
   @media (max-width: 768px) {
     font-size: 13px;

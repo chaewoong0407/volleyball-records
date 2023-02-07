@@ -97,6 +97,7 @@ const TeamButton = styled.button`
   line-height: 24px;
   font-size: 12px;
   font-weight: bold;
+  cursor: pointer;
   @media (max-width: 768px) {
     font-size: 11px;
     width: 70px;

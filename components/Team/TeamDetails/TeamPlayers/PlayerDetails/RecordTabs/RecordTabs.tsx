@@ -21,6 +21,7 @@ interface AttackTypeBoxProps {
 const AttackTypeBox = styled.div<AttackTypeBoxProps>`
   width: 138px;
   flex: 1;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
