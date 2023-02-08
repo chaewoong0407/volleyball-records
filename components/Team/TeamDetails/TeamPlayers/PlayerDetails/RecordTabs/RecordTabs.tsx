@@ -40,8 +40,17 @@ const AttackTypeBox = styled.div<AttackTypeBoxProps>`
   }
 `;
 
-const Box = styled.div`
+export const Box = styled.div`
   width: 411px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  .Progress {
+    width: 150px;
+    height: 150px;
+  }
 
   @media (max-width: 768px) {
     width: 200px;
@@ -88,7 +97,6 @@ export const RecordTabs = ({ data }: RecordTabProps) => {
           </AttackTypeBox>
         ))}
       </AttackTypeWrapper>
-      <Box></Box>
       {menuArr[currentTab].content}
     </>
   );
