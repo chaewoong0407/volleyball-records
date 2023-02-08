@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import Cookies from 'js-cookie';
 import { client } from 'lib/Axios';
-import { getToken } from 'lib/Storage';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
@@ -167,7 +166,6 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
       .then((response) => {
         if (response.status === 200) {
           Cookies.set('token', response.data.data.result.token);
-          console.log(getToken());
           router.push('/team/men');
         }
       })
