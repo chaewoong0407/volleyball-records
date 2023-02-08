@@ -155,7 +155,6 @@ const Login = ({ onSubmit }: LoginSubmitFormProps) => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(form);
     e.preventDefault();
     onSubmit(form);
     client
