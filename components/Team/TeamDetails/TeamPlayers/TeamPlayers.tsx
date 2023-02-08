@@ -95,6 +95,7 @@ const PlayerImg = styled.img`
   width: 180px;
   height: 200px;
   border: 1px solid #e0e0e0;
+  object-fit: contain;
 
   @media (max-width: 768px) {
     width: 120px;

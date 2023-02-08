@@ -12,6 +12,9 @@ const AttackTypeWrapper = styled.div`
   flex-direction: column;
   width: 138px;
   height: 100%;
+  @media (max-width: 768px) {
+    width: 100px;
+  }
 `;
 
 interface AttackTypeBoxProps {
@@ -34,6 +37,7 @@ const AttackTypeBox = styled.div<AttackTypeBoxProps>`
 
   @media (max-width: 768px) {
     font-size: 13px;
+    width: 100px;
   }
   &:first-of-type {
     border-top: none;
@@ -41,25 +45,59 @@ const AttackTypeBox = styled.div<AttackTypeBoxProps>`
 `;
 
 export const Box = styled.div`
-  width: 411px;
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
   gap: 40px;
 
+  @media (max-width: 600px) {
+    padding: 15px;
+  }
+  @media (max-width: 450px) {
+    flex-direction: column;
+    gap: 20px;
+  }
   .Progress {
     width: 150px;
     height: 150px;
+    @media (max-width: 768px) {
+      width: 100px;
+      height: 100px;
+    }
+    @media (max-width: 600px) {
+      gap: 20px;
+    }
   }
 
-  @media (max-width: 768px) {
-    width: 200px;
-  }
+  /* 
+
   @media (max-width: 550px) {
     width: 50px;
   }
   @media (max-width: 470px) {
     width: 0px;
+  } */
+`;
+
+export const TextBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  font-size: 14px;
+  color: #666666;
+  font-weight: bold;
+`;
+
+const ChartWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    overflow-y: auto;
   }
 `;
 interface RecordTabProps {
@@ -70,7 +108,10 @@ export const RecordTabs = ({ data }: RecordTabProps) => {
   const [currentTab, clickTab] = useState(0);
 
   const menuArr = [
-    { name: '공격', content: <RecordTabAttack data={data?.attack} /> },
+    {
+      name: '공격',
+      content: <RecordTabAttack data={data?.attack} />,
+    },
     { name: '블로킹', content: <RecordTabBlock data={data?.block} /> },
     { name: '서브', content: <RecordTabServe data={data?.serve} /> },
     {
@@ -97,7 +138,7 @@ export const RecordTabs = ({ data }: RecordTabProps) => {
           </AttackTypeBox>
         ))}
       </AttackTypeWrapper>
-      {menuArr[currentTab].content}
+      <ChartWrapper>{menuArr[currentTab].content}</ChartWrapper>
     </>
   );
 };

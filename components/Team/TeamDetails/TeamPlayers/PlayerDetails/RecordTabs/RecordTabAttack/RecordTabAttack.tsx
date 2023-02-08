@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 import { AttackType } from '../../PlayerDetails';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { Box } from '../RecordTabs';
+import { Box, TextBox } from '../RecordTabs';
 import { useEffect, useState } from 'react';
 
 export const PlayerStat = styled.div`
-  width: 411px;
+  flex: 1;
   border-left: 1px solid #e0e0e0;
   margin: 0;
   text-align: center;
@@ -65,7 +65,6 @@ export const RecordTabAttack = ({ data }: RecordDataProps) => {
   const onScroll = () => {
     setY(window.scrollY);
   };
-
   const handleAccuracyCount = (num: number) => {
     for (let i = 0; i <= num; i++) {
       setAccuracy(i);
@@ -79,6 +78,7 @@ export const RecordTabAttack = ({ data }: RecordDataProps) => {
 
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
+    onScroll();
 
     if (y > 350) {
       handleAccuracyCount(Number(data?.accuracy));
@@ -88,60 +88,66 @@ export const RecordTabAttack = ({ data }: RecordDataProps) => {
       setPossession(0);
     }
     return () => window.removeEventListener('scroll', onScroll);
-  }, [data?.accuracy, data?.possession, y]);
+  }, [data?.accuracy, data?.possession, setAccuracy, setPossession, y]);
   return (
     <>
       <Box>
-        <CircularProgressbar
-          value={accuracy}
-          maxValue={100}
-          text={`${data?.accuracy}%`}
-          strokeWidth={6}
-          className={'Progress'}
-          styles={{
-            path: {
-              // Path color
-              stroke: `#797F95`,
-              // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-              strokeLinecap: 'butt',
-              // Customize transition animation
-              transition: 'stroke-dashoffset 2s ease 0s',
-              transformOrigin: 'center center',
-            },
-            text: {
-              // Text color
-              fill: '#949494',
-              // Text size
-              fontSize: '12px',
-              fontWeight: 'bold',
-            },
-          }}
-        />
-        <CircularProgressbar
-          value={possession}
-          maxValue={100}
-          text={`${data?.possession}%`}
-          strokeWidth={6}
-          className={'Progress'}
-          styles={{
-            path: {
-              // Path color
-              stroke: `#87BBB6`,
-              // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-              strokeLinecap: 'butt',
-              // Customize transition animation
-              transition: 'stroke-dashoffset 2s ease 0s',
-              transformOrigin: 'center center',
-            },
-            text: {
-              // Text color
-              fill: '#949494',
-              // Text size
-              fontSize: '12px',
-              fontWeight: 'bold',
-            },
-          }}
-        />
+        <TextBox>
+          <CircularProgressbar
+            value={accuracy}
+            maxValue={100}
+            text={`${data?.accuracy}%`}
+            strokeWidth={6}
+            className={'Progress'}
+            styles={{
+              path: {
+                // Path color
+                stroke: `#797F95`,
+                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                strokeLinecap: 'butt',
+                // Customize transition animation
+                transition: 'stroke-dashoffset 2s ease 0s',
+                transformOrigin: 'center center',
+              },
+              text: {
+                // Text color
+                fill: '#949494',
+                // Text size
+                fontSize: '12px',
+                fontWeight: 'bold',
+              },
+            }}
+          />
+          <div>공격 성공률</div>
+        </TextBox>
+        <TextBox>
+          <CircularProgressbar
+            value={possession}
+            maxValue={100}
+            text={`${data?.possession}%`}
+            strokeWidth={6}
+            className={'Progress'}
+            styles={{
+              path: {
+                // Path color
+                stroke: `#87BBB6`,
+                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                strokeLinecap: 'butt',
+                // Customize transition animation
+                transition: 'stroke-dashoffset 2s ease 0s',
+                transformOrigin: 'center center',
+              },
+              text: {
+                // Text color
+                fill: '#949494',
+                // Text size
+                fontSize: '12px',
+                fontWeight: 'bold',
+              },
+            }}
+          />
+          <div>공격 점유율</div>
+        </TextBox>
       </Box>
       <PlayerStat>
         <dl>
